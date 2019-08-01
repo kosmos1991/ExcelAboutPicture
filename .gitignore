@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/ExcelAboutPicture/bin
+/ExcelAboutPicture/obj
+/ExcelAboutPicture/Upload
+/packages

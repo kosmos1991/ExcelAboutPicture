@@ -1,0 +1,37 @@
+﻿<a href="javascript:;" id="export" class="btn btn-primary btn-lg">点击导出&raquo;</a>
+
+@section scripts{
+    <script>
+        $("#export").click(function () {
+            $.ajax({
+                url: "/Home/Export",
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                data: {
+                },
+                success: function (res) {
+                    // 打印结果
+                    console.log(res)
+
+                    // 下载文件
+                    window.location.href = res.path;
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    var arr =
+                        {
+                            /*弹出jqXHR对象的信息*/
+                            "responseText": jqXHR.responseText,
+                            "status": jqXHR.status,
+                            "readyState": jqXHR.readyState,
+                            "statusText": jqXHR.statusText,
+                            /*弹出其他两个参数的信息*/
+                            "textStatus": jqXHR.textStatus,
+                            "errorThrown": jqXHR.errorThrown,
+                        }
+
+                    alert(JSON.stringify(arr).toString(), { icon: 5 });
+                }
+            });
+        })
+    </script>
+}
